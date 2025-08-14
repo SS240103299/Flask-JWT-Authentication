@@ -1,0 +1,9 @@
+click==8.1.8
+Flask==2.2.5
+Flask-SQLAlchemy==3.0.5
+Jinja2==3.1.6
+MarkupSafe==2.1.5
+SQLAlchemy==2.0.42
+typing_extensions==4.7.1
+Werkzeug==2.2.3
+

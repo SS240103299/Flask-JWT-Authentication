@@ -1,0 +1,64 @@
+{%extends 'base.html'%}
+
+
+
+{% block body %}
+
+
+
+
+<div class="container">
+    <div class="d-flex justify-content-center align-items-center vh-100">
+        <div class="col-md-4 login-container">
+          <h3 class="text-center mb-4">Login</h3>
+
+          {% with messages = get_flashed_messages(with_categories=False) %}
+          {% if messages %}
+          {% for message in messages %}
+          
+            <p style="color:rgb(253, 247, 247); background-color: brown;border-radius: 0.3rem;padding: 0.4rem; margin-bottom: 0.5rem;">{{ message }}</p>
+          {% endfor %}
+          {% endif %}
+          {% endwith %}
+          <form  id="auth-form" method="POST" action="{{url_for('login')}}">
+            <div class="mb-3">
+              <input class="form-control" type="text" name="username" placeholder="Username" required>
+            </div>
+            <div class="mb-3">
+              <input class="form-control" type="password" name="password" placeholder="Password" required>
+            </div>
+            <input type="submit" value="Login" class="btn btn-custom w-100 mb-2"  onclick="setActionForm('login')"/>
+            
+            <input type="button" value="Register" class="btn btn-custom w-100"  onclick="setActionForm('register')"/>
+
+
+          </form>
+        </div>
+      </div>
+
+   
+</div>
+
+<script>
+
+    function setActionForm(action){
+        let form = document.getElementById("auth-form")
+        if (action === 'login'){
+            form.action = "{{url_for('login')}}";
+            form.method = "post";
+            form.submit();
+            
+        }
+        else if (action === 'register'){
+            form.action = "{{url_for('register')}}";
+            form.method = "post";
+            form.submit();
+
+        }
+
+    }
+
+</script>
+
+
+{% endblock %}
